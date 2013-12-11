@@ -260,8 +260,9 @@ void usage(FILE *outstream)
 {
 	fprintf(outstream, "\n%s V: %s\n",__BASENAME,__VERSION);	
 	fprintf(outstream, "Highlights the line that contains the pattern using ANSI escape sequence.\n"
-					   "Example %s [option] [file||pipedInput]\n\n",__BASENAME);
+					   "Example %s [option] [file]\n\n",__BASENAME);
 	fprintf(outstream, "Regex Pattern interpretation:\n"
+					   "-r\tSET REGEX\n"
 					   "-i\tIGNORE CASE\n"
 					   "-e\tEXTENDED REGEX\n\n");
 	fprintf(outstream, "Highlighting:\n"
