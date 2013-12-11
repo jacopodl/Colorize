@@ -1,0 +1,4 @@
+Colorize
+========
+
+Simple bash highlighter
