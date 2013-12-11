@@ -22,8 +22,8 @@ Usage:
     -f	FOREGROUND COLOR [color]
     -b	BACKGROUND COLOR [color]
     [color]: black,red,green,yellow,blue,violet,cyan,white
-    Miscelaneous:
     
+    Miscelaneous:
     -v, --version	display program version
     -h, --help	display this and exit
 
