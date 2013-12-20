@@ -17,6 +17,7 @@
 */
 
 #include <stdio.h>
+#include <stdlib.h>
 #include <unistd.h>
 #include <regex.h>
 // -----------------
@@ -239,15 +240,27 @@ int Highlighter(struct Data_Opt *opt)
 	{
 		if(rMatch(&myregex,str))
 		{
-			if(opt->foreground)
-				fprintf(stdout, "%s%s%s",__ForeColorList[opt->fore_color],str,(char*)"\e[0m");
+			if(str[strlen(str)-1]=='\n')
+			{
+				char *strmod=(char*)calloc((strlen(str)-1),sizeof(char*));
+				strncpy(strmod,str,strlen(str)-1);
+
+				if(opt->foreground)
+					fprintf(stdout, "%s%s%s",__ForeColorList[opt->fore_color],strmod,(char*)"\e[0m\n");
+				else
+					fprintf(stdout, "%s%s%s",__BackColorList[opt->back_color],strmod,(char*)"\e[0m\n");
+				free(strmod);
+			}
 			else
-				fprintf(stdout, "%s%s%s",__BackColorList[opt->back_color],str,(char*)"\e[0m");
+				if(opt->foreground)
+					fprintf(stdout, "%s%s%s",__ForeColorList[opt->fore_color],str,(char*)"\e[0m");
+				else
+					fprintf(stdout, "%s%s%s",__BackColorList[opt->back_color],str,(char*)"\e[0m");
 		}
 		else
 			fprintf(stdout, "%s", str);
 	}
-
+	fclose(stream);
 	return 0;
 }
 
@@ -260,7 +273,7 @@ void usage(FILE *outstream)
 {
 	fprintf(outstream, "\n%s V: %s\n",__BASENAME,__VERSION);	
 	fprintf(outstream, "Highlights the line that contains the pattern using ANSI escape sequence.\n"
-					   "Example %s [option] [file]\n\n",__BASENAME);
+					   "Example: %s [option] [file]\n\n",__BASENAME);
 	fprintf(outstream, "Regex Pattern interpretation:\n"
 					   "-r\tSET REGEX\n"
 					   "-i\tIGNORE CASE\n"
@@ -268,8 +281,8 @@ void usage(FILE *outstream)
 	fprintf(outstream, "Highlighting:\n"
 					   "-f\tFOREGROUND COLOR [color]\n"
 					   "-b\tBACKGROUND COLOR [color]\n"
-					   "[color]: black,red,green,yellow,blue,violet,cyan,white\n");
-	fprintf(outstream, "Miscelaneous:\n\n"
+					   "[color]: black,red,green,yellow,blue,violet,cyan,white\n\n");
+	fprintf(outstream, "Miscelaneous:\n"
 		  			   "-v, --version\tdisplay program version\n"
 		  			   "-h, --help\tdisplay this and exit\n\n");
 }
