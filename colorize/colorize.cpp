@@ -70,7 +70,7 @@ struct Data_Opt
 
 int main(int argc, char **argv)
 {
-	if(argc<4)
+	if(argc<2)
 	{
 		usage(stdout);
 		return -1;
@@ -242,7 +242,7 @@ int Highlighter(struct Data_Opt *opt)
 		{
 			if(str[strlen(str)-1]=='\n')
 			{
-				char *strmod=(char*)calloc((strlen(str)-1),sizeof(char*));
+				char *strmod=(char*)calloc((strlen(str)-1),sizeof(char));
 				strncpy(strmod,str,strlen(str)-1);
 
 				if(opt->foreground)
