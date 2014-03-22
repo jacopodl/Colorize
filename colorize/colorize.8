@@ -1,0 +1,36 @@
+.\" Manpage for colorize.
+.TH man 8 "13 Dec 2013" "1.0" "colorize man page"
+.SH NAME
+colorize \- The line highlighter.
+.SH SYNOPSIS
+colorize [-r] regex [-i|-e] [-f|-b] color file
+.SH DESCRIPTION
+Highlights the line that contains the pattern using ANSI escape sequence.
+.SH OPTIONS
+Regex Pattern interpretation:
+
+-r  SET REGEX
+
+-i  IGNORE CASE
+
+-e  EXTENDED REGEX
+
+Highlighting:
+
+-f  FOREGROUND COLOR [color]
+
+-b  BACKGROUND COLOR [color]
+
+[color]: black,red,green,yellow,blue,violet,cyan,white
+
+Miscelaneous:
+
+-v, --version   display program version
+
+-h, --help  	display program help
+.SH SEE ALSO
+greep
+.SH BUGS
+No known bugs.
+.SH AUTHOR
+Jacopo De Luca - https://github.com/jacopodl
