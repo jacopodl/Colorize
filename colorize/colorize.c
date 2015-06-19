@@ -79,14 +79,18 @@ int main(int argc, char **argv)
 		{
 			case 'b':
 				set.back_color=set_color(ax_arg);
-			break;
-			case 'f':
-				set.fore_color=set_color(ax_arg);
-				printf("%d\n",set.fore_color);
 				if(set.fore_color==-1)
 				{
 					printf("Invalid color\n");
-					exit(0);
+					return -1;
+				}
+			break;
+			case 'f':
+				set.fore_color=set_color(ax_arg);
+				if(set.fore_color==-1)
+				{
+					printf("Invalid color\n");
+					return -1;
 				}
 			break;
 			case 'e':
