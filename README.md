@@ -14,7 +14,6 @@ Usage:
     Example: colorize [option] [file]
     
     Regex Pattern interpretation:
-    -r	SET REGEX
     -i	IGNORE CASE
     -e	EXTENDED REGEX
     

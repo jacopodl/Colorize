@@ -1,12 +1,15 @@
-CC=g++
+CC=gcc
 
 all: colorize
 
-colorize: colorize.o 
-	$(CC) colorize.o -o colorize
+colorize: colorize.o argsx.o
+	$(CC) colorize.o argsx.o -o colorize
 
-colorize.o: colorize.cpp
-	$(CC) -c colorize.cpp
+colorize.o: colorize.c
+	$(CC) -c colorize.c
+
+argsx.o: argsx.c
+	$(CC) -c argsx.c
 
 clean:
 	rm *o colorize
