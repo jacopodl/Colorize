@@ -79,7 +79,7 @@ int main(int argc, char **argv)
 		{
 			case 'b':
 				set.back_color=set_color(ax_arg);
-				if(set.fore_color==-1)
+				if(set.back_color==-1)
 				{
 					printf("Invalid color\n");
 					return -1;
